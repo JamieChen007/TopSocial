@@ -9,8 +9,8 @@ app.use(express.json());
 
 app.use("/api", router);
 
-const port = 80;
+const port = 8080;
 
 app.listen(port, function () {
-  console.log("server is running on http://localhost:80");
+  console.log("server is running on http://localhost:8080");
 });

@@ -1,8 +1,22 @@
 const axios = require("axios");
 
-const getCardById = async function (req, res) {
-  const id = req.query.id;
+const getCards = async function (req, res) {
+  try {
+    const url = "http://localhost:8000/cards";
+    const card = await axios.get(url);
 
+    res.status(200).json({
+      msg: "get cards succeed",
+      data: card.data,
+    });
+  } catch (error) {
+    res.status(500).send("server error");
+  }
+};
+
+const getCardById = async function (req, res) {
+  // const id = req.query.id;
+  const id = req.params.card_id;
   if (!id) {
     return res.status(400).send("id is required");
   }
@@ -12,7 +26,7 @@ const getCardById = async function (req, res) {
     const card = await axios.get(url);
 
     res.status(200).json({
-      msg: "get cards succeed",
+      msg: "get cards by Id succeed",
       data: card.data,
     });
   } catch (error) {
@@ -54,4 +68,4 @@ const deleteCardById = async function (req, res) {
   }
 };
 
-module.exports = { getCardById, createCard, deleteCardById };
+module.exports = { getCards, getCardById, createCard, deleteCardById };

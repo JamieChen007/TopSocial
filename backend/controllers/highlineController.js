@@ -7,9 +7,7 @@ const getHighLine = async function (req, res) {
 
     res.status(200).json({
       msg: "get highline succeed",
-      data: {
-        highline: highline.data,
-      },
+      data: highline.data,
     });
   } catch (error) {
     res.status(500).send("server error");

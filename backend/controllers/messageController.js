@@ -7,7 +7,7 @@ const getMessage = async function (req, res) {
 
     res.status(200).json({
       msg: "get message succeed",
-      data: { message: message.data },
+      data: message.data,
     });
   } catch (error) {
     res.status(500).send("server error");
